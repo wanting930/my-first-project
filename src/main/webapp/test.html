@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="BIG5">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>EMPNO</th>
+				<th>ENAME</th>
+				<th>JOB</th>
+				<th>MGR</th>
+				<th>HIREDATE</th>
+				<th>SAL</th>
+				<th>COMM</th>
+				<th>DEPTNO</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+</body>
+
+<script>
+	const tbody = document.querySelector('tbody');
+	const url ="emp/getAll";
+	fetch(url)
+		.then(resp => resp.json())
+		.then(empList => {
+			for(let emp of empList){
+				tbody.innerHTML += `
+					<tr>
+						<td>${emp.empno}</td>
+						<td>${emp.ename}</td>
+						<td>${emp.job}</td>
+						<td>${emp.mgr}</td>
+						<td>${emp.hiredate}</td>
+						<td>${emp.sal}</td>
+						<td>${emp.comm}</td>
+						<td>${emp.deptno}</td>
+					</tr>
+				`;
+			}
+	});
+</script>
+
+</html>
